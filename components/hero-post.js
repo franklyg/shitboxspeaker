@@ -13,32 +13,16 @@ export default function HeroPost({
   slug,
 }) {
   return (
-    <section>
-      <div className="mb-8 md:mb-16">
-        <CoverImage
-          title={RichText.asText(title)}
-          slug={slug}
-          url={coverImage.url}
-        />
-      </div>
-      <div className="md:grid md:grid-cols-2 md:col-gap-16 lg:col-gap-8 mb-20 md:mb-28">
-        <div>
-          <h3 className="mb-4 text-4xl lg:text-6xl leading-tight">
-            <Link as={`/posts/${slug}`} href="/posts/[slug]">
-              <a className="hover:underline">
-                <RichText render={title} />
-              </a>
-            </Link>
-          </h3>
-          <div className="mb-4 md:mb-0 text-lg">
-            <Date dateString={date} />
-          </div>
-        </div>
-        <div>
-          <p className="text-lg leading-relaxed mb-4">{excerpt}</p>
-          {author && <Avatar name={author.name} picture={author.picture} />}
-        </div>
-      </div>
+    <section className="w-screen h-screen md:h-64 md:py-64 md:w-9/12 inset-y-0 right-0 block flex flex-col absolute content-end p-3 text-right shadow-xl" style={{backgroundImage: 'url('+coverImage.url+')', backgroundSize: 'cover', backgroundPosition: 'center', backgroundRepeat: 'no-repeat', backgroundAttachment: 'fixed', margin: 'auto', top: '-10rem'}}>
+      <h3 className="mb-2 text-4xl lg:text-6xl">
+        <Link as={`/posts/${slug}`} href="/posts/[slug]">
+          <a>
+            <RichText render={title} />
+          </a>
+        </Link>
+      </h3>
+      <p className="text-lg leading-relaxed mb-1">{excerpt}</p>
+      {author && <Avatar name={author.name} picture={author.picture} />}
     </section>
   )
 }

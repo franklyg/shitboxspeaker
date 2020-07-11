@@ -13,10 +13,7 @@ export default function Index({ preview, allPosts }) {
   return (
     <>
       <Layout preview={preview}>
-        <Head>
-          <title>Next.js Blog Example with {CMS_NAME}</title>
-        </Head>
-        <Container>
+        <div className="relative h-screen">
           <Intro />
           {heroPost && (
             <HeroPost
@@ -28,8 +25,8 @@ export default function Index({ preview, allPosts }) {
               excerpt={heroPost.excerpt}
             />
           )}
-          {morePosts.length > 0 && <MoreStories posts={morePosts} />}
-        </Container>
+        </div>
+        {morePosts.length > 0 && <MoreStories posts={morePosts} />}
       </Layout>
     </>
   )
