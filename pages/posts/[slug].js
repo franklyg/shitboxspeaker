@@ -20,34 +20,33 @@ export default function Post({ post, morePosts, preview }) {
 
   return (
     <Layout preview={preview}>
-      <Container>
-        <Header />
-        {router.isFallback ? (
-          <PostTitle>Loading…</PostTitle>
-        ) : (
-          <>
-            <article>
-              <Head>
-                <title>
-                  {post.title[0].text} | Next.js Blog Example with {CMS_NAME}
-                </title>
-                <meta property="og:image" content={post.coverimage.url} />
-              </Head>
-              <PostHeader
-                title={post.title}
-                coverImage={post.coverimage}
-                date={post.date}
-                author={post.author}
-              />
-              <PostBody content={post.content} />
-            </article>
-            <SectionSeparator />
-            {morePosts && morePosts.length > 0 && (
-              <MoreStories posts={morePosts} />
-            )}
-          </>
-        )}
-      </Container>
+
+      <Header />
+      {router.isFallback ? (
+        <PostTitle>Loading…</PostTitle>
+      ) : (
+        <>
+          <article>
+            <Head>
+              <title>
+                {post.title[0].text} | Next.js Blog Example with {CMS_NAME}
+              </title>
+              <meta property="og:image" content={post.coverimage.url} />
+            </Head>
+            <PostHeader
+              title={post.title}
+              date={post.date}
+              author={post.author}
+              coverImage={post.coverimage}
+            />
+            <PostBody content={post.content} />
+          </article>
+        </>
+      )}
+      <SectionSeparator />
+      {morePosts && morePosts.length > 0 && (
+        <MoreStories posts={morePosts} />
+      )}
     </Layout>
   )
 }

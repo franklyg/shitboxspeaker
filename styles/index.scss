@@ -13,7 +13,7 @@
 @tailwind utilities;
 
 body{
-  background: #5b4373;
+  // background: #5b4373;
 }
 .main-header{
   text-shadow: 0px 0px 0px pink;
@@ -72,7 +72,7 @@ body{
   }
   &:hover{
     background-size: calc(100vw / 8) calc(100vh / 8);
-    transition: background-size 2s;
+    transition: background-size 6s;
     .post-info{
       transform: scale(.65);
     }
@@ -93,6 +93,20 @@ body{
 }
 .author{
   color: white;
+}
+.post-title{
+  color: white;
+  text-shadow: 4px 4px 0px black;
+}
+.post-content h3,
+.post-content p{
+  margin-bottom: 2rem;
+}
+.post-content h3{
+  font-size: 3rem;
+}
+.post-content p{
+  font-size: 1.25rem;
 }
 @keyframes kenBurns{
   0%{
