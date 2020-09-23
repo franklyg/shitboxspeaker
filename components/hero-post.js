@@ -13,16 +13,17 @@ export default function HeroPost({
   slug,
 }) {
   return (
-    <section className="w-screen h-screen md:h-64 md:py-64 md:w-9/12 inset-y-0 right-0 block flex flex-col absolute content-end p-3 text-right shadow-xl" style={{backgroundImage: 'url('+coverImage.url+')', backgroundSize: 'cover', backgroundPosition: 'center', backgroundRepeat: 'no-repeat', backgroundAttachment: 'fixed', margin: 'auto', top: '-10rem'}}>
-      <h3 className="mb-2 text-4xl lg:text-6xl">
+    <section className="hero-image shadow-lg" style={{backgroundImage: 'url('+coverImage.url+')', backgroundSize: 'cover', backgroundPosition: 'center', backgroundRepeat: 'no-repeat', margin: 'auto'}}>
+      <div className="text-right pt-8 pr-8 relative z-20">
+        <h1 className="hero-title text-6xl text-black font-secondary-title">
+          <RichText render={title} />
+        </h1>
         <Link as={`/posts/${slug}`} href="/posts/[slug]">
-          <a>
-            <RichText render={title} />
+          <a className="font-secondary-title">
+            Read This Shit
           </a>
         </Link>
-      </h3>
-      <p className="text-lg leading-relaxed mb-1">{excerpt}</p>
-      {author && <Avatar name={author.name} picture={author.picture} />}
+      </div>
     </section>
   )
 }

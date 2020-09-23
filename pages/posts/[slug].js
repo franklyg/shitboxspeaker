@@ -13,6 +13,7 @@ import PostTitle from '../../components/post-title'
 import { CMS_NAME } from '../../lib/constants'
 
 export default function Post({ post, morePosts, preview }) {
+  console.log(post, morePosts, preview)
   const router = useRouter()
   if (!router.isFallback && !post?._meta?.uid) {
     return <ErrorPage statusCode={404} />
@@ -20,13 +21,11 @@ export default function Post({ post, morePosts, preview }) {
 
   return (
     <Layout preview={preview}>
-
-      <Header />
       {router.isFallback ? (
         <PostTitle>Loading…</PostTitle>
       ) : (
         <>
-          <article>
+          <article className="pt-16">
             <Head>
               <title>
                 {post.title[0].text} | Next.js Blog Example with {CMS_NAME}
@@ -39,7 +38,7 @@ export default function Post({ post, morePosts, preview }) {
               author={post.author}
               coverImage={post.coverimage}
             />
-            <PostBody content={post.content} />
+            <PostBody content={post.content} coverImage={post.coverimage}/>
           </article>
         </>
       )}

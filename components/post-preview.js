@@ -3,11 +3,6 @@ import { RichText } from 'prismic-reactjs'
 import Avatar from '../components/avatar'
 import Date from '../components/date'
 import CoverImage from './cover-image'
-// <CoverImage
-//   title={RichText.asText(title)}
-//   slug={slug}
-//   url={coverImage.url}
-// />
 
 export default function PostPreview({
   title,
@@ -16,19 +11,49 @@ export default function PostPreview({
   excerpt,
   author,
   slug,
+  tags,
+  sectionSpecificStyle,
+  fullCopy,
+  content
 }) {
+  // home-post border border-black shadow-lg
   return (
     <Link as={`/posts/${slug}`} href="/posts/[slug]">
-      <a className="home-post relative"  style={{backgroundImage: 'url('+coverImage.url+')', backgroundPosition: 'center'}}>
-        <div className="post-info p-2 flex flex-col content-end transition-all duration-500">
-          <h3 className="text-3xl mb-3 leading-snug font-card-content">
-            <RichText render={title} />
-          </h3>
-          <div>
-            <p className="text-lg leading-relaxed mb-4 font-card-content">{excerpt}</p>
-            <Avatar name={author.name} picture={author.picture} />
+      <a className={sectionSpecificStyle}>
+          {/* <div className="post-image">
+            <img src={coverImage.url} alt={title} />
           </div>
-        </div>
+          <div className="post-info">
+            <h3 className="leading-snug font-card-content">
+              <RichText render={title} />
+            </h3>
+          </div> */}
+        {
+          fullCopy ?
+          <>
+            <div className="latest-content" style={{ background: `url(${coverImage.url})`, backgroundRepeat: 'no-repeat', backgroundSize: 'cover', height: 'inherit', backgroundPosition: 'center' }}>
+              <div className="post-content">
+                <div className="post-info">
+                  <h3 className="leading-snug font-card-content">
+                    <RichText render={title} />
+                  </h3>
+                </div>
+                <p>{excerpt}</p>
+              </div>
+            </div>
+          </>
+          : 
+          <>
+            <div className="post-image">
+              <img src={coverImage.url} alt={title} />
+            </div>
+            <div className="post-info">
+              <h3 className="leading-snug font-card-content">
+                <RichText render={title} />
+              </h3>
+            </div>
+          </>
+        }
       </a>
     </Link>
   )
